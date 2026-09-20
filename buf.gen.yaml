@@ -1,0 +1,9 @@
+version: v2
+inputs:
+  - directory: test/fixtures/proto
+plugins:
+  - local: protoc-gen-es
+    out: test/fixtures/gen
+    opt:
+      - target=ts
+      - import_extension=js

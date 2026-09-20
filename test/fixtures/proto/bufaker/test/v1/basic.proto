@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package bufaker.test.v1;
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_ACTIVE = 1;
+  STATUS_SUSPENDED = 2;
+  STATUS_CLOSED = 3;
+}
+
+// An enum whose only member is the zero value, to exercise the
+// "nothing left after excluding zero" edge case.
+enum OnlyZero {
+  ONLY_ZERO_UNSPECIFIED = 0;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string postal_code = 3;
+  string country = 4;
+}
+
+message EmailContact {
+  string email = 1;
+  bool verified = 2;
+}
+
+message PhoneContact {
+  string phone = 1;
+  string extension = 2;
+}
+
+message Person {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  int32 age = 4;
+  Status status = 5;
+  Address address = 6;
+  repeated string nicknames = 7;
+  repeated Address previous_addresses = 8;
+  map<string, string> labels = 9;
+  map<string, Address> addresses_by_kind = 10;
+  map<int32, Status> status_history = 11;
+
+  oneof contact_method {
+    EmailContact email_contact = 12;
+    PhoneContact phone_contact = 13;
+    string raw_handle = 14;
+  }
+}
+
+// Directly self-referential: exercises the depth guard.
+message TreeNode {
+  string label = 1;
+  TreeNode child = 2;
+  repeated TreeNode children = 3;
+}
+
+// Mutually recursive pair: exercises the depth guard across two types.
+message Ping {
+  string id = 1;
+  Pong pong = 2;
+}
+
+message Pong {
+  string id = 1;
+  Ping ping = 2;
+}

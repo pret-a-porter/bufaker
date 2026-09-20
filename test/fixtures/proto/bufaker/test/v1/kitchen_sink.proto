@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package bufaker.test.v1;
+
+import "bufaker/test/v1/basic.proto";
+import "bufaker/test/v1/scalars.proto";
+import "google/protobuf/timestamp.proto";
+
+// Every field kind at once, for the end-to-end shape test.
+message KitchenSink {
+  AllScalars scalars = 1;
+  Status status = 2;
+  Person person = 3;
+  TreeNode tree = 4;
+  WellKnownLite wkt = 5;
+
+  repeated int32 numbers = 6;
+  repeated Status statuses = 7;
+  repeated Person people = 8;
+
+  map<string, int64> counters = 9;
+  map<string, Person> people_by_id = 10;
+  map<bool, string> flags = 11;
+
+  optional string maybe_note = 12;
+
+  oneof payload {
+    int32 int_payload = 13;
+    Person person_payload = 14;
+    Status enum_payload = 15;
+  }
+}
+
+message WellKnownLite {
+  google.protobuf.Timestamp at = 1;
+}

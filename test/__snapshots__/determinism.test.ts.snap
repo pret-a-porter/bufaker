@@ -1,0 +1,480 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshots > matches a fixed-seed KitchenSink 1`] = `
+{
+  "counters": {
+    "soluta": "-4944796169119902519",
+    "vesper": "-4043640765343241724",
+  },
+  "enumPayload": "STATUS_ACTIVE",
+  "flags": {
+    "false": "tenuis coepi",
+    "true": "quasi temptatio",
+  },
+  "maybeNote": "caries decor",
+  "numbers": [
+    -1551946376,
+    967395373,
+  ],
+  "people": [
+    {
+      "address": {
+        "city": "Wehnerfort",
+        "country": "Guernsey",
+        "postalCode": "24896-9608",
+        "street": "35931 Stoltenberg Union",
+      },
+      "addressesByKind": {
+        "demonstro": {
+          "city": "Ariborough",
+          "country": "Réunion",
+          "postalCode": "66873-1730",
+          "street": "10214 Raleigh Divide",
+        },
+        "sortitus": {
+          "city": "Larkinville",
+          "country": "Papua New Guinea",
+          "postalCode": "81580",
+          "street": "6229 Chestnut Drive",
+        },
+      },
+      "age": 71,
+      "email": "Jena_Kozey22@yahoo.com",
+      "id": "709ffe29-650d-4a1e-bc5d-80673db97749",
+      "labels": {
+        "accendo": "succedo aedificium",
+        "attollo": "dens tenuis cognatus",
+      },
+      "name": "Aryanna Torp",
+      "nicknames": [
+        "denuncio antea vobis",
+        "spes",
+      ],
+      "phoneContact": {
+        "extension": "vestigium",
+        "phone": "240-881-1497",
+      },
+      "previousAddresses": [
+        {
+          "city": "Krystelstead",
+          "country": "Ghana",
+          "postalCode": "91762-9553",
+          "street": "26967 Runolfsdottir Canyon",
+        },
+        {
+          "city": "Fountainebleau",
+          "country": "Virgin Islands, British",
+          "postalCode": "11461",
+          "street": "92650 Strosin Brooks",
+        },
+      ],
+      "status": "STATUS_CLOSED",
+      "statusHistory": {
+        "-651": "STATUS_SUSPENDED",
+        "762": "STATUS_ACTIVE",
+      },
+    },
+    {
+      "address": {
+        "city": "New Eriberto",
+        "country": "Egypt",
+        "postalCode": "92214",
+        "street": "40476 Monahan Ways",
+      },
+      "addressesByKind": {
+        "desipio": {
+          "city": "West Gustcester",
+          "country": "Nicaragua",
+          "postalCode": "46938",
+          "street": "7132 Luisa Cape",
+        },
+        "sumo": {
+          "city": "Bradleyfield",
+          "country": "Comoros",
+          "postalCode": "88494",
+          "street": "920 Robyn View",
+        },
+      },
+      "age": 64,
+      "email": "Lori.Quitzon85@hotmail.com",
+      "id": "d6201e25-a965-416b-ac3d-0e325dd53840",
+      "labels": {
+        "aegrotatio": "dedecor amissio sono",
+        "arcesso": "adulatio assentator",
+      },
+      "name": "Oren Schmitt-Heathcote",
+      "nicknames": [
+        "aequus cras",
+        "tergo suppellex",
+      ],
+      "phoneContact": {
+        "extension": "avarus decor",
+        "phone": "1-691-265-7896 x28366",
+      },
+      "previousAddresses": [
+        {
+          "city": "Fort Otilia",
+          "country": "Angola",
+          "postalCode": "43873",
+          "street": "12404 W State Street",
+        },
+        {
+          "city": "Esperanzastead",
+          "country": "Ukraine",
+          "postalCode": "51873-8005",
+          "street": "485 W 7th Street",
+        },
+      ],
+      "status": "STATUS_ACTIVE",
+      "statusHistory": {
+        "229": "STATUS_SUSPENDED",
+        "287": "STATUS_SUSPENDED",
+      },
+    },
+  ],
+  "peopleById": {
+    "cohaero": {
+      "address": {
+        "city": "Gilesland",
+        "country": "Switzerland",
+        "postalCode": "57549-9570",
+        "street": "642 Clinton Street",
+      },
+      "addressesByKind": {
+        "eos": {
+          "city": "Wesley Chapel",
+          "country": "Montenegro",
+          "postalCode": "39023-4951",
+          "street": "3022 Steven Spurs",
+        },
+        "victoria": {
+          "city": "East Eugeneboro",
+          "country": "Mauritania",
+          "postalCode": "95818-7482",
+          "street": "91864 Jerrell Islands",
+        },
+      },
+      "age": 38,
+      "email": "Kimberly.Howell@yahoo.com",
+      "emailContact": {
+        "email": "Teagan.Kreiger@hotmail.com",
+      },
+      "id": "93da73d1-339a-4f2c-825f-24cf196e1204",
+      "labels": {
+        "adsum": "sonitus",
+        "ciminatio": "tergiversatio",
+      },
+      "name": "Ayana Fisher II",
+      "nicknames": [
+        "communis ullam perferendis",
+        "et termes",
+      ],
+      "previousAddresses": [
+        {
+          "city": "Fort Trevorborough",
+          "country": "Åland Islands",
+          "postalCode": "86584-2864",
+          "street": "58631 Johnston Mountain",
+        },
+        {
+          "city": "Somerville",
+          "country": "Democratic People's Republic of Korea",
+          "postalCode": "56757-9761",
+          "street": "604 Kunze Oval",
+        },
+      ],
+      "status": "STATUS_SUSPENDED",
+      "statusHistory": {
+        "-276": "STATUS_ACTIVE",
+        "-947": "STATUS_SUSPENDED",
+      },
+    },
+    "uxor": {
+      "address": {
+        "city": "Bradenshire",
+        "country": "Trinidad and Tobago",
+        "postalCode": "01815-4309",
+        "street": "274 Christiansen Hill",
+      },
+      "addressesByKind": {
+        "tristis": {
+          "city": "South Deontaecester",
+          "country": "Brazil",
+          "postalCode": "40522",
+          "street": "133 Braun Heights",
+        },
+        "varietas": {
+          "city": "North Reginaside",
+          "country": "North Macedonia",
+          "postalCode": "58452",
+          "street": "6822 Stroman Knolls",
+        },
+      },
+      "age": 67,
+      "email": "Sage.Jacobi68@yahoo.com",
+      "id": "c7173325-e62c-4010-9792-8be8f80782a2",
+      "labels": {
+        "amet": "sperno alioqui",
+        "curis": "adstringo",
+      },
+      "name": "Mr. Arnaldo Boyer",
+      "nicknames": [
+        "solium cruciamentum voluptate",
+        "depromo compello ancilla",
+      ],
+      "phoneContact": {
+        "extension": "conscendo",
+        "phone": "1-551-584-4106 x517",
+      },
+      "previousAddresses": [
+        {
+          "city": "Byronchester",
+          "country": "Jamaica",
+          "postalCode": "05520",
+          "street": "312 Waterside",
+        },
+        {
+          "city": "South Coryfort",
+          "country": "Suriname",
+          "postalCode": "54056-1604",
+          "street": "1820 Mckayla Field",
+        },
+      ],
+      "status": "STATUS_SUSPENDED",
+      "statusHistory": {
+        "-820": "STATUS_CLOSED",
+        "615": "STATUS_ACTIVE",
+      },
+    },
+  },
+  "person": {
+    "address": {
+      "city": "San Clemente",
+      "country": "Gibraltar",
+      "postalCode": "64874-0374",
+      "street": "4382 Hillside",
+    },
+    "addressesByKind": {
+      "amissio": {
+        "city": "New Randolphfurt",
+        "country": "Northern Mariana Islands",
+        "postalCode": "66278-7648",
+        "street": "16083 New Lane",
+      },
+      "concido": {
+        "city": "South Laurineville",
+        "country": "Nicaragua",
+        "postalCode": "58792-2699",
+        "street": "4058 S Bridge Street",
+      },
+    },
+    "age": 89,
+    "email": "Cyrus_Towne-Zemlak@yahoo.com",
+    "emailContact": {
+      "email": "Juwan_Cummerata@gmail.com",
+    },
+    "id": "bec9425a-1059-4d42-b2f2-590ef815b284",
+    "labels": {
+      "adhuc": "patrocinor",
+      "corrigo": "venia curso abbas",
+    },
+    "name": "Braxton Sawayn",
+    "nicknames": [
+      "antepono astrum",
+      "antepono corpus peccatus",
+    ],
+    "previousAddresses": [
+      {
+        "city": "Gradyborough",
+        "country": "Jamaica",
+        "postalCode": "75663",
+        "street": "89986 S Union Street",
+      },
+      {
+        "city": "Lake Cynthia",
+        "country": "Falkland Islands (Malvinas)",
+        "postalCode": "06793",
+        "street": "5930 W 4th Avenue",
+      },
+    ],
+    "status": "STATUS_CLOSED",
+    "statusHistory": {
+      "-340": "STATUS_SUSPENDED",
+      "645": "STATUS_SUSPENDED",
+    },
+  },
+  "scalars": {
+    "bytesField": "MXXr4UBZLuY=",
+    "doubleField": -616961.099243,
+    "fixed32Field": 231385715,
+    "fixed64Field": "12224053137084366439",
+    "floatField": 24421.75390625,
+    "int32Field": -267457325,
+    "int64Field": "-5781364764337903912",
+    "sfixed32Field": 1056834294,
+    "sfixed64Field": "3405246226374793638",
+    "sint32Field": 406410335,
+    "sint64Field": "4418304885525847373",
+    "stringField": "virga",
+    "uint32Field": 1584087043,
+    "uint64Field": "4139864449181732026",
+  },
+  "status": "STATUS_CLOSED",
+  "statuses": [
+    "STATUS_CLOSED",
+    "STATUS_SUSPENDED",
+  ],
+  "tree": {
+    "child": {
+      "child": {
+        "label": "fuga",
+      },
+      "children": [
+        {
+          "label": "utrum repellendus ulterius",
+        },
+        {
+          "label": "suasoria fuga",
+        },
+      ],
+      "label": "arx",
+    },
+    "children": [
+      {
+        "child": {
+          "label": "adsum",
+        },
+        "children": [
+          {
+            "label": "ducimus",
+          },
+          {
+            "label": "xiphias amitto",
+          },
+        ],
+        "label": "admoveo terra arbustum",
+      },
+      {
+        "child": {
+          "label": "vacuus modi",
+        },
+        "children": [
+          {
+            "label": "vae tergum addo",
+          },
+          {
+            "label": "eius beatus utique",
+          },
+        ],
+        "label": "vulpes",
+      },
+    ],
+    "label": "aeneus",
+  },
+  "wkt": {
+    "at": "2023-12-08T17:23:20.409Z",
+  },
+}
+`;
+
+exports[`snapshots > matches a fixed-seed Person 1`] = `
+{
+  "address": {
+    "city": "Krisberg",
+    "country": "Russian Federation",
+    "postalCode": "04911",
+    "street": "2650 Zemlak Ville",
+  },
+  "addressesByKind": {
+    "commodi": {
+      "city": "New Unique",
+      "country": "Bolivia",
+      "postalCode": "03715-2962",
+      "street": "8211 Commercial Road",
+    },
+    "tergeo": {
+      "city": "Seattle",
+      "country": "Guatemala",
+      "postalCode": "48953-3827",
+      "street": "796 Wilderman Tunnel",
+    },
+  },
+  "age": 56,
+  "email": "Ara_Padberg53@yahoo.com",
+  "id": "397cc44c-fe58-4ab5-b880-ce5915ea6c59",
+  "labels": {
+    "clamo": "conculco",
+    "solum": "adopto",
+  },
+  "name": "Briana Purdy",
+  "nicknames": [
+    "demens amita",
+    "velut",
+  ],
+  "phoneContact": {
+    "extension": "amet thorax",
+    "phone": "1-740-474-3611 x713",
+  },
+  "previousAddresses": [
+    {
+      "city": "Kesslerville",
+      "country": "Pitcairn Islands",
+      "postalCode": "59455-8067",
+      "street": "5034 Purdy Crescent",
+    },
+    {
+      "city": "South Deronbury",
+      "country": "Montserrat",
+      "postalCode": "97797",
+      "street": "691 Vernon Glen",
+    },
+  ],
+  "status": "STATUS_ACTIVE",
+  "statusHistory": {
+    "403": "STATUS_SUSPENDED",
+    "604": "STATUS_CLOSED",
+  },
+}
+`;
+
+exports[`snapshots > matches a fixed-seed Person with heuristics off 1`] = `
+{
+  "address": {
+    "city": "corpus laudantium desolo",
+    "country": "copia possimus aestivus",
+    "postalCode": "terebro",
+    "street": "contabesco desino statua",
+  },
+  "addressesByKind": {
+    "spero": {
+      "city": "comprehendo desolo",
+      "country": "absconditus provident",
+      "postalCode": "pectus",
+      "street": "expedita adimpleo",
+    },
+  },
+  "age": 1296531130,
+  "email": "charisma",
+  "id": "quasi",
+  "labels": {
+    "decimus": "adulatio audacia adiuvo",
+  },
+  "name": "territo termes",
+  "nicknames": [
+    "victoria soleo",
+  ],
+  "previousAddresses": [
+    {
+      "city": "ustulo debeo",
+      "country": "vesper",
+      "postalCode": "arbitro succurro succurro",
+      "street": "tertius comes",
+    },
+  ],
+  "rawHandle": "textor cinis quibusdam",
+  "status": "STATUS_CLOSED",
+  "statusHistory": {
+    "825": "STATUS_CLOSED",
+  },
+}
+`;

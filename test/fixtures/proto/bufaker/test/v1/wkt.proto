@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package bufaker.test.v1;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message WellKnown {
+  google.protobuf.Timestamp created_at = 1;
+  google.protobuf.Duration timeout = 2;
+  google.protobuf.StringValue nickname = 3;
+  google.protobuf.Int32Value retries = 4;
+  google.protobuf.Int64Value big_count = 5;
+  google.protobuf.UInt32Value unsigned_retries = 6;
+  google.protobuf.UInt64Value big_unsigned = 7;
+  google.protobuf.BoolValue enabled = 8;
+  google.protobuf.DoubleValue ratio = 9;
+  google.protobuf.FloatValue score = 10;
+  google.protobuf.BytesValue blob = 11;
+  google.protobuf.Struct metadata = 12;
+  google.protobuf.Value any_value = 13;
+  google.protobuf.ListValue values = 14;
+  google.protobuf.Empty nothing = 15;
+}
+
+// The two types bufaker deliberately leaves unset in v1.
+message Unsupported {
+  google.protobuf.Any payload = 1;
+  google.protobuf.FieldMask update_mask = 2;
+  string always_set = 3;
+}
+
+message RepeatedWellKnown {
+  repeated google.protobuf.Timestamp timestamps = 1;
+  map<string, google.protobuf.Duration> durations = 2;
+}
