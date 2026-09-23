@@ -1,8 +1,7 @@
-import { create, ScalarType } from "@bufbuild/protobuf";
+import { create } from "@bufbuild/protobuf";
 import type { DescMessage, Message } from "@bufbuild/protobuf";
 import { timestampFromDate } from "@bufbuild/protobuf/wkt";
 import type { MockContext } from "./types.js";
-import { generateScalar } from "./scalars.js";
 
 /**
  * Generates a well-known type. Returning `undefined` means "leave this field
@@ -41,19 +40,6 @@ function makeDuration(desc: DescMessage, ctx: MockContext): Message {
     nanos: ctx.faker.number.int({ min: 0, max: 999_999_999 }),
   });
 }
-
-/** `google.protobuf.*Value` wrapper type name -> the scalar it wraps. */
-const WRAPPER_SCALARS: Record<string, ScalarType> = {
-  "google.protobuf.DoubleValue": ScalarType.DOUBLE,
-  "google.protobuf.FloatValue": ScalarType.FLOAT,
-  "google.protobuf.Int64Value": ScalarType.INT64,
-  "google.protobuf.UInt64Value": ScalarType.UINT64,
-  "google.protobuf.Int32Value": ScalarType.INT32,
-  "google.protobuf.UInt32Value": ScalarType.UINT32,
-  "google.protobuf.BoolValue": ScalarType.BOOL,
-  "google.protobuf.StringValue": ScalarType.STRING,
-  "google.protobuf.BytesValue": ScalarType.BYTES,
-};
 
 /** How deep a generated Struct/Value/ListValue tree may nest. */
 const STRUCT_MAX_DEPTH = 2;
@@ -149,6 +135,13 @@ const skip: WellKnownGenerator = () => undefined;
  * The generator for each supported well-known type, keyed by fully-qualified
  * name. Consulted before the walker's generic recursion, so entries here also
  * serve as a way to special-case any type by name.
+ *
+ * A type only needs an entry if generic recursion would get it wrong — that
+ * is, if it carries constraints the descriptor does not express. The
+ * `google.protobuf.*Value` wrappers deliberately have none: a wrapper is just
+ * `{ value: <scalar> }` with nothing extra to satisfy, so the walker's normal
+ * message handling already produces a valid one, and reflection performs the
+ * unwrapping into the generated TypeScript type.
  */
 export const wellKnownGenerators: Record<string, WellKnownGenerator> = {
   "google.protobuf.Timestamp": makeTimestamp,
@@ -157,12 +150,6 @@ export const wellKnownGenerators: Record<string, WellKnownGenerator> = {
   "google.protobuf.Value": (desc, ctx) => makeValue(desc, ctx, 0),
   "google.protobuf.ListValue": (desc, ctx) => makeListValue(desc, ctx, 0),
   "google.protobuf.Empty": (desc) => create(desc, {}),
-  ...Object.fromEntries(
-    Object.entries(WRAPPER_SCALARS).map(([typeName, scalar]): [string, WellKnownGenerator] => [
-      typeName,
-      (desc, ctx) => create(desc, { value: generateScalar(scalar, ctx) }),
-    ]),
-  ),
   ...Object.fromEntries(UNSUPPORTED_WELL_KNOWN_TYPES.map((n) => [n, skip])),
 };
 
