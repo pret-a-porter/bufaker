@@ -1,5 +1,6 @@
 import { create, ScalarType } from "@bufbuild/protobuf";
 import type { DescMessage, Message } from "@bufbuild/protobuf";
+import { timestampFromDate } from "@bufbuild/protobuf/wkt";
 import type { MockContext } from "./types.js";
 import { generateScalar } from "./scalars.js";
 
@@ -21,11 +22,15 @@ function fieldNamed(desc: DescMessage, name: string) {
 }
 
 function makeTimestamp(desc: DescMessage, ctx: MockContext): Message {
-  const ms = ctx.faker.date.recent({ days: 30, refDate: ctx.options.refDate }).getTime();
-  return create(desc, {
-    seconds: BigInt(Math.floor(ms / 1000)),
-    nanos: (ms % 1000) * 1_000_000,
-  });
+  const date = ctx.faker.date.recent({ days: 30, refDate: ctx.options.refDate });
+  // Let protobuf-es split milliseconds into (seconds, nanos). Doing it by hand
+  // with `ms % 1000` gives a negative remainder for pre-1970 dates, which
+  // yields negative nanos — invalid, and rejected by the JSON encoder.
+  const { seconds, nanos } = timestampFromDate(date);
+  // Constructed with the caller's descriptor rather than the bundled
+  // TimestampSchema, so this still works if more than one copy of
+  // @bufbuild/protobuf is installed.
+  return create(desc, { seconds, nanos });
 }
 
 function makeDuration(desc: DescMessage, ctx: MockContext): Message {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fromBinary, toBinary } from "@bufbuild/protobuf";
+import { fromBinary, toBinary, toJson } from "@bufbuild/protobuf";
 import { timestampDate } from "@bufbuild/protobuf/wkt";
 import { BUFAKER_EPOCH, mock, UNSUPPORTED_WELL_KNOWN_TYPES, wellKnownGenerators } from "../src/index.js";
 import {
@@ -33,6 +33,22 @@ describe("google.protobuf.Timestamp", () => {
     const ms = timestampDate(mock(WellKnownSchema, { seed: 1, refDate }).createdAt!).getTime();
     expect(ms).toBeLessThanOrEqual(refDate.getTime());
     expect(refDate.getTime() - ms).toBeLessThan(31 * DAY);
+  });
+
+  it("stays valid for a pre-1970 reference date", () => {
+    // Splitting milliseconds by hand gets this wrong: JavaScript's % yields a
+    // negative remainder for negative timestamps, producing negative nanos.
+    const refDate = new Date("1960-06-15T00:00:00.000Z");
+    for (let seed = 0; seed < 25; seed++) {
+      const m = mock(WellKnownSchema, { seed, refDate });
+      expect(m.createdAt!.nanos).toBeGreaterThanOrEqual(0);
+      expect(m.createdAt!.nanos).toBeLessThan(1_000_000_000);
+      expect(m.createdAt!.seconds).toBeLessThan(0n);
+      // The JSON encoder enforces the Timestamp invariants, so this is the
+      // check that actually matters.
+      expect(() => toJson(WellKnownSchema, m)).not.toThrow();
+      expect(timestampDate(m.createdAt!).getTime()).toBeLessThanOrEqual(refDate.getTime());
+    }
   });
 
   it("is reproducible for a seed regardless of when it runs", () => {
