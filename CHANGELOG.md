@@ -6,9 +6,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 While the version is `0.x`, the public API may change in a minor release.
 
-## [Unreleased]
-
-## [0.1.0] - 2026-09-20
+## [0.1.0] - Unreleased
 
 Initial release.
 
@@ -30,6 +28,6 @@ Initial release.
   on by default and disabled with `heuristics: false`.
 - `seed` for reproducible output, including a pinned reference date so that
   generated timestamps do not vary with the wall clock.
+- `refDate`, setting the point that generated dates are drawn relative to.
 
-[Unreleased]: https://github.com/msharipov/bufaker/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/msharipov/bufaker/releases/tag/v0.1.0
