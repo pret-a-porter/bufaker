@@ -6,7 +6,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 While the version is `0.x`, the public API may change in a minor release.
 
-## [0.1.0] - Unreleased
+## [0.1.0] - 2026-09-25
 
 Initial release.
 
