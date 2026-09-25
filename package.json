@@ -14,13 +14,13 @@
     "testing"
   ],
   "author": "Maksim Sharipov",
-  "homepage": "https://github.com/msharipov/bufaker#readme",
+  "homepage": "https://github.com/pret-a-porter/bufaker#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msharipov/bufaker.git"
+    "url": "git+https://github.com/pret-a-porter/bufaker.git"
   },
   "bugs": {
-    "url": "https://github.com/msharipov/bufaker/issues"
+    "url": "https://github.com/pret-a-porter/bufaker/issues"
   },
   "license": "MIT",
   "type": "module",
