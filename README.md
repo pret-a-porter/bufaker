@@ -34,6 +34,12 @@ there is nothing for bufaker to reflect over. Supporting them would mean a
 different design (parsing `.proto` files, or a code generator of its own) and
 is out of scope. See [Non-goals](#non-goals).
 
+**Syntax:** bufaker targets `proto3`, which is what its test suite covers.
+Nothing in the walker assumes proto3 — field presence is read from the
+descriptor rather than inferred — so `proto2` and Editions schemas may well
+work, but they are untested and unsupported. If you rely on `required` fields
+or closed enums, verify before depending on it.
+
 ## Install
 
 ```sh
@@ -302,6 +308,7 @@ Two details make this actually hold:
 ## Non-goals
 
 - **Other codegens.** `ts-proto` and similar emit no runtime descriptor.
+- **`proto2` and Editions.** Untested; `proto3` is the supported syntax.
 - **Full `Any` resolution.** Would require a type registry.
 - **A CLI.** v1 is a library API only.
 
