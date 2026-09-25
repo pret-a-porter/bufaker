@@ -241,7 +241,7 @@ function populateOneof(r: ReflectMessage, msg: Message, oneof: DescOneof, ctx: M
 /**
  * Generates a message from its descriptor.
  *
- * Returns `undefined` when the type is one protofaker deliberately does not mock
+ * Returns `undefined` when the type is one bufaker deliberately does not mock
  * (`google.protobuf.Any`, `google.protobuf.FieldMask`), which callers turn
  * into "leave the field unset".
  */

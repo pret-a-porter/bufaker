@@ -13,7 +13,7 @@ function fieldNamed(desc: DescMessage, name: string) {
   const field = desc.fields.find((f) => f.name === name);
   if (field === undefined) {
     throw new Error(
-      `protofaker: expected ${desc.typeName} to declare a field named "${name}". ` +
+      `bufaker: expected ${desc.typeName} to declare a field named "${name}". ` +
         `This usually means a non-standard definition of a google.protobuf type is in use.`,
     );
   }
@@ -64,14 +64,14 @@ function makeValue(desc: DescMessage, ctx: MockContext, depth: number): Message 
     case "structValue": {
       const structDesc = fieldNamed(desc, "struct_value").message;
       if (structDesc === undefined) {
-        throw new Error("protofaker: google.protobuf.Value.struct_value is not a message field");
+        throw new Error("bufaker: google.protobuf.Value.struct_value is not a message field");
       }
       return create(desc, { kind: { case: "structValue", value: makeStruct(structDesc, ctx, depth + 1) } });
     }
     case "listValue": {
       const listDesc = fieldNamed(desc, "list_value").message;
       if (listDesc === undefined) {
-        throw new Error("protofaker: google.protobuf.Value.list_value is not a message field");
+        throw new Error("bufaker: google.protobuf.Value.list_value is not a message field");
       }
       return create(desc, { kind: { case: "listValue", value: makeListValue(listDesc, ctx, depth + 1) } });
     }
@@ -83,7 +83,7 @@ function makeValue(desc: DescMessage, ctx: MockContext, depth: number): Message 
 function valueDescOfStruct(structDesc: DescMessage): DescMessage {
   const fields = fieldNamed(structDesc, "fields");
   if (fields.fieldKind !== "map" || fields.mapKind !== "message") {
-    throw new Error("protofaker: google.protobuf.Struct.fields is not a map of messages");
+    throw new Error("bufaker: google.protobuf.Struct.fields is not a map of messages");
   }
   return fields.message;
 }
@@ -91,7 +91,7 @@ function valueDescOfStruct(structDesc: DescMessage): DescMessage {
 function valueDescOfListValue(listDesc: DescMessage): DescMessage {
   const values = fieldNamed(listDesc, "values");
   if (values.fieldKind !== "list" || values.listKind !== "message") {
-    throw new Error("protofaker: google.protobuf.ListValue.values is not a list of messages");
+    throw new Error("bufaker: google.protobuf.ListValue.values is not a list of messages");
   }
   return values.message;
 }
@@ -117,7 +117,7 @@ function makeListValue(desc: DescMessage, ctx: MockContext, depth: number): Mess
 }
 
 /**
- * Well-known types protofaker deliberately leaves unset in v1.
+ * Well-known types bufaker deliberately leaves unset in v1.
  *
  * `Any` would need a type registry to pick and pack a payload, and a
  * `FieldMask` is only meaningful against a specific request, so a random one

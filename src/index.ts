@@ -49,7 +49,7 @@ export { canDescend, recursionCount } from "./cycles.js";
 export { generateMessage, pickEnumValue } from "./walker.js";
 
 /**
- * protofaker's own faker instance.
+ * bufaker's own faker instance.
  *
  * Kept separate from the `faker` export of `@faker-js/faker` so that seeding a
  * mock never disturbs a caller's own faker state, and vice versa. Pass your
@@ -70,7 +70,7 @@ const DEFAULT_LIST_LENGTH: readonly [number, number] = [1, 3];
 const DEFAULT_MAP_SIZE: readonly [number, number] = [1, 3];
 const DEFAULT_MAX_DEPTH = 3;
 
-/** Applies protofaker's defaults to a partial set of options. */
+/** Applies bufaker's defaults to a partial set of options. */
 export function resolveOptions(options: MockOptions = {}): ResolvedMockOptions {
   return {
     faker: options.faker ?? defaultFaker,
@@ -120,7 +120,7 @@ function rootContext(schema: DescMessage, resolved: ResolvedMockOptions): MockCo
  * Generates a mock message from its protobuf-es schema.
  *
  * ```ts
- * import { mock } from "protofaker";
+ * import { mock } from "bufaker";
  * import { PersonSchema } from "./gen/person_pb.js";
  *
  * const person = mock(PersonSchema);          // fully typed as Person
@@ -138,7 +138,7 @@ export function mock<Desc extends DescMessage>(
     resolved.faker.seed(options.seed);
   }
   const message = generateMessage(schema, rootContext(schema, resolved));
-  // `undefined` means the root type is one protofaker does not mock (Any,
+  // `undefined` means the root type is one bufaker does not mock (Any,
   // FieldMask); an empty message of the right type is the honest answer.
   return (message ?? create(schema)) as MessageShape<Desc>;
 }

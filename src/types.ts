@@ -18,7 +18,7 @@ export interface MockContext {
   /**
    * Dotted path from the root message to this field, using proto field names
    * and rooted at the fully-qualified message name — for example
-   * `protofaker.test.v1.Person.address.city`.
+   * `bufaker.test.v1.Person.address.city`.
    *
    * List elements and map values do not add a path segment: every element of
    * `Person.nicknames` has the path `…Person.nicknames`.
@@ -178,7 +178,7 @@ export interface MockOptions {
    */
   refDate?: Date | number;
   /**
-   * Use this faker instance instead of protofaker's own. Passing your own
+   * Use this faker instance instead of bufaker's own. Passing your own
    * instance means `seed` seeds yours.
    */
   faker?: Faker;

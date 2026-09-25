@@ -1,5 +1,5 @@
 {
-  "name": "protofaker",
+  "name": "@pret-a-porter/bufaker",
   "version": "0.1.0",
   "description": "Generate realistic mock data for any Protobuf message from its protobuf-es runtime descriptor, powered by Faker.",
   "keywords": [
@@ -36,6 +36,9 @@
     }
   },
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "generate": "buf generate",
     "build": "tsc -p tsconfig.build.json",

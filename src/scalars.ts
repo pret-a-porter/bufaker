@@ -21,7 +21,7 @@ function bigintBetween(ctx: MockContext, min: bigint, max: bigint): bigint {
  * the `scalars` option, or per field with `overrides`.
  *
  * 64-bit integer types always produce a `bigint`, including fields declared
- * with `jstype = JS_STRING` — protofaker writes through protobuf-es reflection,
+ * with `jstype = JS_STRING` — bufaker writes through protobuf-es reflection,
  * which converts to the string representation itself.
  */
 export const defaultScalarGenerators: ScalarGenerators = {
@@ -97,7 +97,7 @@ export const MAP_KEY_TYPES: readonly ScalarType[] = [
 export function generateScalar(type: ScalarType, ctx: MockContext): unknown {
   const generator: ScalarGenerator | undefined = ctx.options.scalars[type];
   if (generator === undefined) {
-    throw new Error(`protofaker: no generator registered for scalar type ${String(type)}`);
+    throw new Error(`bufaker: no generator registered for scalar type ${String(type)}`);
   }
   return generator(ctx);
 }
