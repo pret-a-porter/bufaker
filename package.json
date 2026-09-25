@@ -13,6 +13,15 @@
     "fixtures",
     "testing"
   ],
+  "author": "Maksim Sharipov",
+  "homepage": "https://github.com/msharipov/bufaker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msharipov/bufaker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/msharipov/bufaker/issues"
+  },
   "license": "MIT",
   "type": "module",
   "files": [
