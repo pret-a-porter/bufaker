@@ -1,11 +1,11 @@
-# bufaker
+# protofaker
 
 Generate realistic mock data for **any** Protobuf message, from its schema
 alone. No per-message fixture code, no hand-written builders — point it at a
 generated schema and it walks the descriptor for you.
 
 ```ts
-import { mock } from "bufaker";
+import { mock } from "protofaker";
 import { PersonSchema } from "./gen/person_pb.js";
 
 const person = mock(PersonSchema); // fully typed as `Person`
@@ -19,9 +19,9 @@ Built on [`@bufbuild/protobuf`](https://github.com/bufbuild/protobuf-es)
 
 ## Requirements
 
-bufaker needs the **runtime schema descriptor** that protobuf-es emits
+protofaker needs the **runtime schema descriptor** that protobuf-es emits
 alongside your TypeScript types — the `…Schema` export. That descriptor is what
-makes generic mocking possible at all, and it is why bufaker supports exactly
+makes generic mocking possible at all, and it is why protofaker supports exactly
 one codegen:
 
 | Codegen | Supported |
@@ -30,11 +30,11 @@ one codegen:
 | `ts-proto`, `protobufjs`, `protoc-gen-ts`, … | ❌ |
 
 `ts-proto` and friends emit plain interfaces with no descriptor to walk, so
-there is nothing for bufaker to reflect over. Supporting them would mean a
+there is nothing for protofaker to reflect over. Supporting them would mean a
 different design (parsing `.proto` files, or a code generator of its own) and
 is out of scope. See [Non-goals](#non-goals).
 
-**Syntax:** bufaker targets `proto3`, which is what its test suite covers.
+**Syntax:** protofaker targets `proto3`, which is what its test suite covers.
 Nothing in the walker assumes proto3 — field presence is read from the
 descriptor rather than inferred — so `proto2` and Editions schemas may well
 work, but they are untested and unsupported. If you rely on `required` fields
@@ -43,7 +43,7 @@ or closed enums, verify before depending on it.
 ## Install
 
 ```sh
-npm install --save-dev bufaker
+npm install --save-dev protofaker
 ```
 
 `@bufbuild/protobuf` is a peer dependency — you already have it if you are
@@ -142,8 +142,8 @@ const people = mockList(PersonSchema, 5, { seed: 42 });
 | `oneofChance` | `1` | Probability a oneof group gets a member. |
 | `overrides` | `{}` | Per-field generators. See below. |
 | `scalars` | — | Replace individual scalar generators. |
-| `refDate` | now, or `BUFAKER_EPOCH` when seeded | Reference point for generated dates. |
-| `faker` | bufaker's own instance | Use your faker instance instead. |
+| `refDate` | now, or `SEEDED_REF_DATE` when seeded | Reference point for generated dates. |
+| `faker` | protofaker's own instance | Use your faker instance instead. |
 
 ## Overrides
 
@@ -175,7 +175,7 @@ const person = mock(PersonSchema, {
 
 Key precedence, most specific first:
 
-1. `bufaker.example.v1.Person.address.city` — the fully-qualified path
+1. `protofaker.example.v1.Person.address.city` — the fully-qualified path
 2. `Person.address.city` — any suffix of the path, longest first
 3. `address.city`
 4. `Address.city` — the declaring message type
@@ -191,7 +191,7 @@ calls it three times — and receives a context:
 mock(PersonSchema, {
   overrides: {
     city: (ctx) => {
-      ctx.path;    // "bufaker.example.v1.Person.address.city"
+      ctx.path;    // "protofaker.example.v1.Person.address.city"
       ctx.depth;   // 1
       ctx.stack;   // ["…Person", "…Address"]
       ctx.field;   // the DescField
@@ -274,7 +274,7 @@ mock(TreeNodeSchema, { maxDepth: 1 }).child?.child; // undefined
 
 `google.protobuf.Any` holds an arbitrary packed message identified by a type
 URL. Filling one means choosing a concrete type and packing it, which needs a
-type registry bufaker does not have. `google.protobuf.FieldMask` names fields
+type registry protofaker does not have. `google.protobuf.FieldMask` names fields
 of a *specific* request, so a random mask carries no meaning.
 
 Both are **left unset rather than raising**, so that a message which merely
@@ -297,10 +297,10 @@ expect(toJson(PersonSchema, mock(PersonSchema, { seed: 42 }))).toMatchSnapshot()
 
 Two details make this actually hold:
 
-- bufaker uses **its own faker instance**, so seeding a mock never disturbs
+- protofaker uses **its own faker instance**, so seeding a mock never disturbs
   your application's faker state, and vice versa. Pass `faker: yourInstance` to
   share one.
-- A seed also pins `refDate` to `BUFAKER_EPOCH` (2024-01-01T00:00:00Z).
+- A seed also pins `refDate` to `SEEDED_REF_DATE` (2024-01-01T00:00:00Z).
   Otherwise `Timestamp` fields would be drawn relative to the wall clock and
   the same seed would produce a different message tomorrow. Unseeded mocks
   still get timestamps near the present. Set `refDate` to control both.

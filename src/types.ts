@@ -18,7 +18,7 @@ export interface MockContext {
   /**
    * Dotted path from the root message to this field, using proto field names
    * and rooted at the fully-qualified message name — for example
-   * `bufaker.test.v1.Person.address.city`.
+   * `protofaker.test.v1.Person.address.city`.
    *
    * List elements and map values do not add a path segment: every element of
    * `Person.nicknames` has the path `…Person.nicknames`.
@@ -172,13 +172,13 @@ export interface MockOptions {
    * the date heuristics, produce values shortly before it.
    *
    * Defaults to the current time — except when `seed` is set, where it
-   * defaults to {@link BUFAKER_EPOCH}. Wall-clock time would otherwise leak
+   * defaults to {@link SEEDED_REF_DATE}. Wall-clock time would otherwise leak
    * into a seeded run and stop it being reproducible, which is the one thing
    * `seed` is for. Set this explicitly to control both cases.
    */
   refDate?: Date | number;
   /**
-   * Use this faker instance instead of bufaker's own. Passing your own
+   * Use this faker instance instead of protofaker's own. Passing your own
    * instance means `seed` seeds yours.
    */
   faker?: Faker;

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { fromBinary, toBinary, toJson } from "@bufbuild/protobuf";
 import { timestampDate } from "@bufbuild/protobuf/wkt";
-import { BUFAKER_EPOCH, mock, UNSUPPORTED_WELL_KNOWN_TYPES, wellKnownGenerators } from "../src/index.js";
+import { SEEDED_REF_DATE, mock, UNSUPPORTED_WELL_KNOWN_TYPES, wellKnownGenerators } from "../src/index.js";
 import {
   RepeatedWellKnownSchema,
   UnsupportedSchema,
@@ -15,9 +15,9 @@ describe("google.protobuf.Timestamp", () => {
     const m = mock(WellKnownSchema, { seed: 1 });
     expect(m.createdAt).toBeDefined();
     const ms = timestampDate(m.createdAt!).getTime();
-    // A seeded run is pinned to BUFAKER_EPOCH so it stays reproducible.
-    expect(ms).toBeLessThanOrEqual(BUFAKER_EPOCH.getTime());
-    expect(BUFAKER_EPOCH.getTime() - ms).toBeLessThan(31 * DAY);
+    // A seeded run is pinned to SEEDED_REF_DATE so it stays reproducible.
+    expect(ms).toBeLessThanOrEqual(SEEDED_REF_DATE.getTime());
+    expect(SEEDED_REF_DATE.getTime() - ms).toBeLessThan(31 * DAY);
     expect(m.createdAt!.nanos).toBeGreaterThanOrEqual(0);
     expect(m.createdAt!.nanos).toBeLessThan(1_000_000_000);
   });

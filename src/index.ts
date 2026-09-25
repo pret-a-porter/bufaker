@@ -49,13 +49,13 @@ export { canDescend, recursionCount } from "./cycles.js";
 export { generateMessage, pickEnumValue } from "./walker.js";
 
 /**
- * bufaker's own faker instance.
+ * protofaker's own faker instance.
  *
  * Kept separate from the `faker` export of `@faker-js/faker` so that seeding a
  * mock never disturbs a caller's own faker state, and vice versa. Pass your
  * own instance via `options.faker` if you want them shared.
  */
-export const bufakerFaker = new Faker({ locale: en });
+export const defaultFaker = new Faker({ locale: en });
 
 /**
  * The reference date a seeded run uses when `refDate` is not given:
@@ -64,16 +64,16 @@ export const bufakerFaker = new Faker({ locale: en });
  * A seeded mock has to be reproducible tomorrow as well as today, so it cannot
  * take its dates from the wall clock.
  */
-export const BUFAKER_EPOCH = new Date("2024-01-01T00:00:00.000Z");
+export const SEEDED_REF_DATE = new Date("2024-01-01T00:00:00.000Z");
 
 const DEFAULT_LIST_LENGTH: readonly [number, number] = [1, 3];
 const DEFAULT_MAP_SIZE: readonly [number, number] = [1, 3];
 const DEFAULT_MAX_DEPTH = 3;
 
-/** Applies bufaker's defaults to a partial set of options. */
+/** Applies protofaker's defaults to a partial set of options. */
 export function resolveOptions(options: MockOptions = {}): ResolvedMockOptions {
   return {
-    faker: options.faker ?? bufakerFaker,
+    faker: options.faker ?? defaultFaker,
     maxDepth: options.maxDepth ?? DEFAULT_MAX_DEPTH,
     listLength: normalizeRange(options.listLength, DEFAULT_LIST_LENGTH),
     mapSize: normalizeRange(options.mapSize, DEFAULT_MAP_SIZE),
@@ -92,7 +92,7 @@ function resolveRefDate(options: MockOptions): Date {
   if (options.refDate !== undefined) {
     return new Date(options.refDate);
   }
-  return options.seed !== undefined ? BUFAKER_EPOCH : new Date();
+  return options.seed !== undefined ? SEEDED_REF_DATE : new Date();
 }
 
 function normalizeRange(
@@ -120,7 +120,7 @@ function rootContext(schema: DescMessage, resolved: ResolvedMockOptions): MockCo
  * Generates a mock message from its protobuf-es schema.
  *
  * ```ts
- * import { mock } from "bufaker";
+ * import { mock } from "protofaker";
  * import { PersonSchema } from "./gen/person_pb.js";
  *
  * const person = mock(PersonSchema);          // fully typed as Person
@@ -138,7 +138,7 @@ export function mock<Desc extends DescMessage>(
     resolved.faker.seed(options.seed);
   }
   const message = generateMessage(schema, rootContext(schema, resolved));
-  // `undefined` means the root type is one bufaker does not mock (Any,
+  // `undefined` means the root type is one protofaker does not mock (Any,
   // FieldMask); an empty message of the right type is the honest answer.
   return (message ?? create(schema)) as MessageShape<Desc>;
 }

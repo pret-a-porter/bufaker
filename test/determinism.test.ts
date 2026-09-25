@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { Faker, en } from "@faker-js/faker";
 import { toJson } from "@bufbuild/protobuf";
-import { bufakerFaker, mock, mockList } from "../src/index.js";
+import { defaultFaker, mock, mockList } from "../src/index.js";
 import { PersonSchema } from "./fixtures/gen/bufaker/test/v1/basic_pb.js";
 import { KitchenSinkSchema } from "./fixtures/gen/bufaker/test/v1/kitchen_sink_pb.js";
 
@@ -45,7 +45,7 @@ describe("seeding", () => {
     const b = mock(PersonSchema, { seed: 5, faker: mine });
     expect(a).toEqual(b);
     // And that instance is genuinely the one in use.
-    expect(a).toEqual(mock(PersonSchema, { seed: 5, faker: bufakerFaker }));
+    expect(a).toEqual(mock(PersonSchema, { seed: 5, faker: defaultFaker }));
   });
 });
 
